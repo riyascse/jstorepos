@@ -501,17 +501,13 @@ public class ClientesView extends javax.swing.JPanel {
     class MasterSelectionListener implements ListSelectionListener {
     public void valueChanged(ListSelectionEvent e) {
         ListSelectionModel lsm = (ListSelectionModel)e.getSource();
-
-//        int firstIndex = e.getFirstIndex();
-//        int lastIndex = e.getLastIndex();
-//        boolean isAdjusting = e.getValueIsAdjusting();
-
         if (lsm.isSelectionEmpty()) {
 
         } else {
             // Find out which indexes are selected.
             int selected = lsm.getMinSelectionIndex();
             int index = masterTable.convertRowIndexToModel(selected);
+
             String id = masterTable.getModel().getValueAt(index, 0).toString();
             String nombre = (String) masterTable.getModel().getValueAt(index, 2);
             String apellido = (String) masterTable.getModel().getValueAt(index, 3);

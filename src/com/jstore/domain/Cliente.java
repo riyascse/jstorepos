@@ -29,8 +29,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "cliente")
-@NamedQueries({
-    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")})
+
 public class Cliente extends Generic implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -38,23 +37,32 @@ public class Cliente extends Generic implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_cliente")
     private Integer idCliente;
+
     @Column(name = "nombre")
     private String nombre;
+
     @Column(name = "apellido")
     private String apellido;
+
     @Column(name = "direccion")
     private String direccion;
+
     @Column(name = "telefono")
     private String telefono;
+
     @Column(name = "bbpin")
     private String bbpin;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "fecha_ultima_compra")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaUltimaCompra;
+
     @Column(name = "id_ultima_factura")
     private Integer idUltimaFactura;
+
     @OneToMany(mappedBy = "cliente")
     private List<Factura> facturaList;
     @JoinColumn(name = "id_tipo", referencedColumnName = "id_tipo_cliente")
