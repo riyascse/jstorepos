@@ -111,9 +111,9 @@ public void saveOrUpdate(Object o){
                     criteria.add(Restrictions.like((String)pairs.getKey(), pairs.getValue()));
                 }
                 //criteria.list().size();
-                criteria.setFirstResult(0);
-                criteria.setMaxResults(2);
-                criteria.list().size();
+//                criteria.setFirstResult(0);
+//                criteria.setMaxResults(2);
+//                criteria.list().size();
                 return criteria.list();
 	}
 

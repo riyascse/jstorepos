@@ -8,14 +8,14 @@ package com.jstore.domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -27,8 +27,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "producto")
-@NamedQueries({
-    @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")})
 public class Producto extends Generic implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -36,15 +34,20 @@ public class Producto extends Generic implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_producto")
     private Integer idProducto;
+    @Column(name = "id_proveedor")
+    private Integer idProveedor;
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "descripcion")
     private String descripcion;
     @Column(name = "costo")
     private Double costo;
-    @Column(name = "minutos_maquina")
-    private Integer minutosMaquina;
-    @OneToMany(mappedBy = "producto")
+    @JoinTable(name = "producto_sesion", joinColumns = {
+        @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_sesion", referencedColumnName = "id_sesion")})
+    @ManyToMany
+    private List<Sesion> sesionList;
+    @OneToMany(mappedBy = "idProducto")
     private List<FacturaDetalle> facturaDetalleList;
 
     public Producto() {
@@ -60,6 +63,14 @@ public class Producto extends Generic implements Serializable {
 
     public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
+    }
+
+    public Integer getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(Integer idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
     public String getNombre() {
@@ -86,12 +97,12 @@ public class Producto extends Generic implements Serializable {
         this.costo = costo;
     }
 
-    public Integer getMinutosMaquina() {
-        return minutosMaquina;
+    public List<Sesion> getSesionList() {
+        return sesionList;
     }
 
-    public void setMinutosMaquina(Integer minutosMaquina) {
-        this.minutosMaquina = minutosMaquina;
+    public void setSesionList(List<Sesion> sesionList) {
+        this.sesionList = sesionList;
     }
 
     public List<FacturaDetalle> getFacturaDetalleList() {
@@ -124,7 +135,7 @@ public class Producto extends Generic implements Serializable {
 
     @Override
     public String toString() {
-        return "jstore.domain.Producto[idProducto=" + idProducto + "]";
+        return "com.jstore.domain.Producto[idProducto=" + idProducto + "]";
     }
 
 }
