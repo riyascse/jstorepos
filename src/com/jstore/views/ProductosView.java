@@ -23,6 +23,8 @@ import javax.swing.event.ListSelectionListener;
 import com.jstore.JStoreApp;
 import com.jstore.components.EntityTableModel;
 import com.jstore.domain.Producto;
+import javax.swing.JTable;
+import org.jdesktop.swingx.JXTable;
 
 /**
  *
@@ -66,7 +68,7 @@ public class ProductosView extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         newButton = new org.jdesktop.swingx.JXButton();
-        searchButton1 = new org.jdesktop.swingx.JXButton();
+        deleteButton = new org.jdesktop.swingx.JXButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         masterTable = new org.jdesktop.swingx.JXTable();
         jPanel2 = new javax.swing.JPanel();
@@ -78,8 +80,6 @@ public class ProductosView extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        txtMinutosMaq = new javax.swing.JFormattedTextField();
         saveButton = new org.jdesktop.swingx.JXButton();
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.jstore.JStoreApp.class).getContext().getResourceMap(ProductosView.class);
@@ -179,11 +179,11 @@ public class ProductosView extends javax.swing.JPanel {
             }
         });
 
-        searchButton1.setText(resourceMap.getString("searchButton1.text")); // NOI18N
-        searchButton1.setName("searchButton1"); // NOI18N
-        searchButton1.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.setText(resourceMap.getString("deleteButton.text")); // NOI18N
+        deleteButton.setName("deleteButton"); // NOI18N
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButton1ActionPerformed(evt);
+                deleteButtonActionPerformed(evt);
             }
         });
 
@@ -233,12 +233,6 @@ public class ProductosView extends javax.swing.JPanel {
         txtDescripcion.setText(resourceMap.getString("txtDescripcion.text")); // NOI18N
         txtDescripcion.setName("txtDescripcion"); // NOI18N
 
-        jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
-        jLabel8.setName("jLabel8"); // NOI18N
-
-        txtMinutosMaq.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        txtMinutosMaq.setName("txtMinutosMaq"); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -256,17 +250,11 @@ public class ProductosView extends javax.swing.JPanel {
                             .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel8))
-                            .addComponent(jLabel5))
+                        .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCosto)
-                            .addComponent(txtMinutosMaq, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(156, 156, 156))
+                .addGap(74, 74, 74))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,10 +266,7 @@ public class ProductosView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtMinutosMaq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -319,7 +304,7 @@ public class ProductosView extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(newButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(searchButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))))
+                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -329,7 +314,7 @@ public class ProductosView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(searchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(newButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -346,7 +331,7 @@ public class ProductosView extends javax.swing.JPanel {
 }//GEN-LAST:event_searchNombreTxtActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-
+        filterSearch();
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void searchIdTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchIdTxtKeyTyped
@@ -363,9 +348,10 @@ public class ProductosView extends javax.swing.JPanel {
         blankFields();
 }//GEN-LAST:event_newButtonActionPerformed
 
-    private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
 
-}//GEN-LAST:event_searchButton1ActionPerformed
+        deleteProductoSelected();
+}//GEN-LAST:event_deleteButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
     saveProducto();
@@ -373,6 +359,7 @@ public class ProductosView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.JXButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -380,7 +367,6 @@ public class ProductosView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -388,21 +374,37 @@ public class ProductosView extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXButton newButton;
     private org.jdesktop.swingx.JXButton saveButton;
     private org.jdesktop.swingx.JXButton searchButton;
-    private org.jdesktop.swingx.JXButton searchButton1;
     private javax.swing.JTextField searchIdTxt;
     private javax.swing.JTextField searchNombreTxt;
     private javax.swing.JTextField searchProveedorTxt;
     private javax.swing.JFormattedTextField txtCosto;
     private javax.swing.JTextField txtDescripcion;
     private org.jdesktop.swingx.JXTextField txtId;
-    private javax.swing.JFormattedTextField txtMinutosMaq;
     private org.jdesktop.swingx.JXTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
+    private int getSelected(JTable table) {
+        //Get the selected index
+        int selected=0;
+        int index=0;
+        selected = table.getSelectionModel().getMinSelectionIndex();
+        if(selected>=0){
+            index = table.convertRowIndexToModel(selected);
+        }
 
+        return index;
+    }
 
-
-
+    private void deleteProductoSelected() {
+        int index = getSelected(masterTable);
+        EntityTableModel etm = (EntityTableModel) masterTable.getModel();
+        Producto p = (Producto)etm.getBeanAt(index);
+        em.getTransaction().begin();
+        em.remove(p);
+        em.getTransaction().commit();
+        filterSearch();
+    }
+    // End of variables declaration
 
     class MasterSelectionListener implements ListSelectionListener {
     public void valueChanged(ListSelectionEvent e) {
@@ -424,7 +426,6 @@ public class ProductosView extends javax.swing.JPanel {
             Integer id = p.getIdProducto();
             String nombre = p.getNombre();
             String descripcion = p.getDescripcion();
-            Integer minutosMaquina = p.getMinutosMaquina();
             Double costo = p.getCosto();
 
 
@@ -432,7 +433,6 @@ public class ProductosView extends javax.swing.JPanel {
             txtNombre.setText(nombre);
             txtDescripcion.setText(descripcion);
             txtCosto.setValue(costo);
-            txtMinutosMaq.setValue(minutosMaquina);
                 try {
                     txtCosto.commitEdit();
                 } catch (ParseException ex) {
@@ -484,17 +484,12 @@ public class ProductosView extends javax.swing.JPanel {
         nombre = txtNombre.getText();
         descripcion = txtDescripcion.getText();
         costo = ((Number)txtCosto.getValue()).doubleValue();
-        minutosMaquina = ((Number)txtMinutosMaq.getValue()).intValue();
 
-        //Get the selected index
-        selected = masterTable.getSelectionModel().getMinSelectionIndex();
-        if(selected>=0){
-            index = masterTable.convertRowIndexToModel(selected);
-            etm = (EntityTableModel) masterTable.getModel();
-        }
+        index=getSelected(masterTable);
 
 
         if(modificar){
+           etm = (EntityTableModel) masterTable.getModel();
            p = (Producto)etm.getBeanAt(index);
         }else{
             p = new Producto();
@@ -503,7 +498,6 @@ public class ProductosView extends javax.swing.JPanel {
         p.setNombre(nombre);
         p.setDescripcion(descripcion);
         p.setCosto(costo);
-        p.setMinutosMaquina(minutosMaquina);
 
 
         try {

@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
@@ -37,7 +37,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="saveButton" max="32767" attributes="1"/>
                           <Component id="newButton" max="32767" attributes="1"/>
-                          <Component id="searchButton1" alignment="0" pref="79" max="32767" attributes="1"/>
+                          <Component id="deleteButton" alignment="0" pref="79" max="32767" attributes="1"/>
                       </Group>
                   </Group>
               </Group>
@@ -52,7 +52,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="searchButton1" min="-2" pref="47" max="-2" attributes="1"/>
+                      <Component id="deleteButton" min="-2" pref="47" max="-2" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="newButton" min="-2" pref="43" max="-2" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -200,13 +200,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="org.jdesktop.swingx.JXButton" name="searchButton1">
+    <Component class="org.jdesktop.swingx.JXButton" name="deleteButton">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="searchButton1.text"/>
-        <Property name="name" type="java.lang.String" value="searchButton1" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="deleteButton.text"/>
+        <Property name="name" type="java.lang.String" value="deleteButton" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -297,22 +297,13 @@
                               <Component id="txtNombre" alignment="1" pref="185" max="32767" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="1"/>
-                              </Group>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="1"/>
-                          </Group>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="1"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtCosto" max="32767" attributes="1"/>
-                              <Component id="txtMinutosMaq" alignment="0" min="-2" pref="61" max="-2" attributes="1"/>
-                          </Group>
+                          <Component id="txtCosto" min="-2" pref="92" max="-2" attributes="1"/>
                       </Group>
                       <Component id="txtId" min="-2" pref="77" max="-2" attributes="1"/>
                   </Group>
-                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -327,11 +318,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMinutosMaq" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCosto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -404,20 +391,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="txtDescripcion.text"/>
             <Property name="name" type="java.lang.String" value="txtDescripcion" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel8.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel8" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtMinutosMaq">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="0" type="0"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="txtMinutosMaq" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -6,12 +6,15 @@
     <class>com.jstore.domain.TipoCliente</class>
     <class>com.jstore.domain.Vendedor</class>
     <class>com.jstore.domain.Factura</class>
-    <class>com.jstore.domain.Producto</class>
     <class>com.jstore.domain.FacturaDetalle</class>
     <class>com.jstore.domain.Comision</class>
     <class>com.jstore.domain.Cliente</class>
     <class>com.jstore.domain.Proveedor</class>
     <class>com.jstore.domain.Pedidos</class>
+    <class>com.jstore.domain.Producto_tmp</class>
+    <class>com.jstore.domain.Sesion</class>
+    <class>com.jstore.domain.Producto</class>
+    <class>com.jstore.domain.Cita</class>
     <properties>
       <property name="hibernate.connection.username" value="userdb"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
