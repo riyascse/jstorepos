@@ -66,7 +66,7 @@
                     <Component class="org.jdesktop.swingx.JXTree" name="menuTree">
                       <Properties>
                         <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                          <TreeModel code="App&#xa; Ventas&#xa;  Reportes&#xa;  Clientes&#xa; Caja&#xa;  Estado&#xa;  Egreso&#xa;  Ingreso&#xa; Productos&#xa;  Nuevo&#xa;  Editar"/>
+                          <TreeModel code="App&#xa; Ventas&#xa;  Reportes&#xa;  Clientes&#xa; Caja&#xa;  Estado&#xa;  Egreso&#xa;  Ingreso&#xa; Productos&#xa;  Nuevo&#xa;  Editar&#xa; Sesiones&#xa; Citas"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="menuTree" noResource="true"/>
                       </Properties>
@@ -156,7 +156,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="918" max="32767" attributes="0"/>
+                  <EmptySpace pref="920" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

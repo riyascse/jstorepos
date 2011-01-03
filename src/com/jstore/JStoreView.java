@@ -21,6 +21,7 @@ import javax.swing.tree.TreeSelectionModel;
 import com.jstore.views.CajaView;
 import com.jstore.views.ClientesView;
 import com.jstore.views.ProductosView;
+import com.jstore.views.SesionView;
 import com.jstore.views.VentasView;
 
 /**
@@ -165,6 +166,10 @@ public class JStoreView extends FrameView {
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Editar");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Sesiones");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Citas");
+        treeNode1.add(treeNode2);
         menuTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         menuTree.setName("menuTree"); // NOI18N
         menuTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
@@ -221,7 +226,7 @@ public class JStoreView extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 918, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 920, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -301,6 +306,8 @@ public class JStoreView extends FrameView {
         if(menuName.equals("Caja")) containerPanel.add(new CajaView());
         if(menuName.equals("Productos")) containerPanel.add(new ProductosView());
         if(menuName.equals("Clientes")) containerPanel.add(new ClientesView());
+        if(menuName.equals("Sesiones")) containerPanel.add(new SesionView());
+//        if(menuName.equals("Citas")) containerPanel.add(new CitaView());
         containerPanel.validate();
         containerPanel.repaint();
     }
