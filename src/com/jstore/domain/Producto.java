@@ -34,8 +34,6 @@ public class Producto extends Generic implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_producto")
     private Integer idProducto;
-    @Column(name = "id_proveedor")
-    private Integer idProveedor;
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "descripcion")
@@ -47,7 +45,7 @@ public class Producto extends Generic implements Serializable {
         @JoinColumn(name = "id_sesion", referencedColumnName = "id_sesion")})
     @ManyToMany
     private List<Sesion> sesionList;
-    @OneToMany(mappedBy = "idProducto")
+    @OneToMany(mappedBy = "producto")
     private List<FacturaDetalle> facturaDetalleList;
 
     public Producto() {
@@ -63,14 +61,6 @@ public class Producto extends Generic implements Serializable {
 
     public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
-    }
-
-    public Integer getIdProveedor() {
-        return idProveedor;
-    }
-
-    public void setIdProveedor(Integer idProveedor) {
-        this.idProveedor = idProveedor;
     }
 
     public String getNombre() {

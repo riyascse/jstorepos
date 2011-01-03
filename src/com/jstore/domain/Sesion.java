@@ -38,7 +38,7 @@ public class Sesion extends Generic implements Serializable {
     private Integer minutosMaquina;
     @ManyToMany(mappedBy = "sesionList")
     private List<Producto> productoList;
-    @OneToMany(mappedBy = "idSesion")
+    @OneToMany(mappedBy = "sesion")
     private List<Cita> citaList;
 
     public Sesion() {

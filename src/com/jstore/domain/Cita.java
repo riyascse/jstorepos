@@ -41,10 +41,10 @@ public class Cita extends Generic implements Serializable {
     private Integer duracion;
     @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
     @ManyToOne
-    private Cliente idCliente;
+    private Cliente cliente;
     @JoinColumn(name = "id_sesion", referencedColumnName = "id_sesion")
     @ManyToOne
-    private Sesion idSesion;
+    private Sesion sesion;
 
     public Cita() {
     }
@@ -77,20 +77,20 @@ public class Cita extends Generic implements Serializable {
         this.duracion = duracion;
     }
 
-    public Cliente getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente idCliente) {
+        this.cliente = idCliente;
     }
 
-    public Sesion getIdSesion() {
-        return idSesion;
+    public Sesion getSesion() {
+        return sesion;
     }
 
-    public void setIdSesion(Sesion idSesion) {
-        this.idSesion = idSesion;
+    public void setSesion(Sesion idSesion) {
+        this.sesion = idSesion;
     }
 
     @Override

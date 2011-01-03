@@ -29,40 +29,39 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanel1" alignment="0" min="-2" pref="474" max="-2" attributes="0"/>
+                  <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="650" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="saveButton" max="32767" attributes="1"/>
-                          <Component id="newButton" max="32767" attributes="1"/>
-                          <Component id="deleteButton" alignment="0" pref="79" max="32767" attributes="1"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="saveButton" pref="115" max="32767" attributes="1"/>
+                          <Component id="newButton" pref="115" max="32767" attributes="1"/>
+                          <Component id="deleteButton" alignment="0" pref="115" max="32767" attributes="1"/>
                       </Group>
                   </Group>
+                  <Component id="datosPanel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" pref="81" max="-2" attributes="1"/>
+              <Component id="jPanel1" min="-2" pref="69" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="deleteButton" min="-2" pref="47" max="-2" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="newButton" min="-2" pref="43" max="-2" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="saveButton" min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel2" min="-2" max="-2" attributes="1"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="datosPanel" min="-2" max="-2" attributes="1"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,56 +82,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="searchIdTxt" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="searchNombreTxt" min="-2" pref="139" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="searchNombreTxt" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="searchProveedorTxt" min="-2" pref="130" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="searchButton" min="-2" pref="99" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="searchButton" min="-2" pref="99" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="searchIdTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="searchNombreTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="searchProveedorTxt" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="searchButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="searchNombreTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="6" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -148,6 +113,7 @@
         </Component>
         <Component class="org.jdesktop.swingx.JXButton" name="searchButton">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="searchButton.icon"/>
             <Property name="text" type="java.lang.String" resourceKey="searchButton.text"/>
             <Property name="name" type="java.lang.String" value="searchButton" noResource="true"/>
           </Properties>
@@ -155,44 +121,11 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="searchIdTxt">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="searchIdTxt" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchIdTxtKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="searchProveedorTxt">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="searchProveedorTxt" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchProveedorTxtKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel4.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel6.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel10">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel10.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel10" noResource="true"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
     <Component class="org.jdesktop.swingx.JXButton" name="newButton">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" resourceKey="newButton.icon"/>
         <Property name="text" type="java.lang.String" resourceKey="newButton.text"/>
         <Property name="name" type="java.lang.String" value="newButton" noResource="true"/>
       </Properties>
@@ -202,6 +135,7 @@
     </Component>
     <Component class="org.jdesktop.swingx.JXButton" name="deleteButton">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" resourceKey="deleteButton.icon"/>
         <Property name="text" type="java.lang.String" resourceKey="deleteButton.text"/>
         <Property name="name" type="java.lang.String" value="deleteButton" noResource="true"/>
       </Properties>
@@ -267,16 +201,16 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JPanel" name="datosPanel">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Datos">
-              <Property name="titleX" resourceKey="jPanel2.border.title"/>
+              <Property name="titleX" resourceKey="datosPanel.border.title"/>
             </TitledBorder>
           </Border>
         </Property>
-        <Property name="name" type="java.lang.String" value="jPanel2" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="datosPanel" noResource="true"/>
       </Properties>
 
       <Layout>
@@ -301,7 +235,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtCosto" min="-2" pref="92" max="-2" attributes="1"/>
                       </Group>
-                      <Component id="txtId" min="-2" pref="77" max="-2" attributes="1"/>
+                      <Group type="102" attributes="0">
+                          <Component id="txtId" min="-2" pref="77" max="-2" attributes="1"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="newLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               </Group>
@@ -314,6 +252,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="txtId" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="newLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -350,7 +289,6 @@
         </Component>
         <Component class="org.jdesktop.swingx.JXTextField" name="txtId">
           <Properties>
-            <Property name="background" type="java.awt.Color" resourceKey="txtId.background"/>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="txtId" noResource="true"/>
           </Properties>
@@ -393,10 +331,20 @@
             <Property name="name" type="java.lang.String" value="txtDescripcion" noResource="true"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="newLabel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" resourceKey="newLabel.background"/>
+            <Property name="foreground" type="java.awt.Color" resourceKey="newLabel.foreground"/>
+            <Property name="text" type="java.lang.String" resourceKey="newLabel.text"/>
+            <Property name="name" type="java.lang.String" value="newLabel" noResource="true"/>
+            <Property name="opaque" type="boolean" value="true"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="org.jdesktop.swingx.JXButton" name="saveButton">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" resourceKey="saveButton.icon"/>
         <Property name="text" type="java.lang.String" resourceKey="saveButton.text"/>
         <Property name="name" type="java.lang.String" value="saveButton" noResource="true"/>
       </Properties>
