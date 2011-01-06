@@ -24,4 +24,16 @@
       <property name="hibernate.connection.zeroDateTimeBehavior" value="convertToNull"/>
     </properties>
   </persistence-unit>
+  <persistence-unit name="jstorePU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.jstore.domain.Cita</class>
+    <class>com.jstore.domain.Cliente</class>
+    <properties>
+      <property name="hibernate.connection.username" value="root"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.connection.password" value="cannas216ac"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://localhost/jstore"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+    </properties>
+  </persistence-unit>
 </persistence>

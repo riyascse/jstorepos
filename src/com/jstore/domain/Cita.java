@@ -5,8 +5,12 @@
 
 package com.jstore.domain;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +24,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -28,15 +33,17 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "cita")
 public class Cita extends Generic implements Serializable {
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_cita")
     private Integer idCita;
-    @Column(name = "hora_cita")
+    @Column(name = "fecha_cita")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date horaCita;
+    private Date fechaCita;
     @Column(name = "duracion")
     private Integer duracion;
     @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
@@ -58,15 +65,19 @@ public class Cita extends Generic implements Serializable {
     }
 
     public void setIdCita(Integer idCita) {
+        Integer oldIdCita = this.idCita;
         this.idCita = idCita;
+        changeSupport.firePropertyChange("idCita", oldIdCita, idCita);
     }
 
-    public Date getHoraCita() {
-        return horaCita;
+    public Date getFechaCita() {
+        return fechaCita;
     }
 
-    public void setHoraCita(Date horaCita) {
-        this.horaCita = horaCita;
+    public void setFechaCita(Date fechaCita) {
+        Date oldFechaCita = this.fechaCita;
+        this.fechaCita = fechaCita;
+        changeSupport.firePropertyChange("fechaCita", oldFechaCita, fechaCita);
     }
 
     public Integer getDuracion() {
@@ -74,7 +85,9 @@ public class Cita extends Generic implements Serializable {
     }
 
     public void setDuracion(Integer duracion) {
+        Integer oldDuracion = this.duracion;
         this.duracion = duracion;
+        changeSupport.firePropertyChange("duracion", oldDuracion, duracion);
     }
 
     public Cliente getCliente() {
@@ -82,7 +95,9 @@ public class Cita extends Generic implements Serializable {
     }
 
     public void setCliente(Cliente idCliente) {
+        Cliente oldIdCliente = this.cliente;
         this.cliente = idCliente;
+        changeSupport.firePropertyChange("cliente", oldIdCliente, idCliente);
     }
 
     public Sesion getSesion() {
@@ -90,7 +105,9 @@ public class Cita extends Generic implements Serializable {
     }
 
     public void setSesion(Sesion idSesion) {
+        Sesion oldIdSesion = this.sesion;
         this.sesion = idSesion;
+        changeSupport.firePropertyChange("sesion", oldIdSesion, idSesion);
     }
 
     @Override
@@ -116,6 +133,14 @@ public class Cita extends Generic implements Serializable {
     @Override
     public String toString() {
         return "com.jstore.domain.Cita[idCita=" + idCita + "]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
 
 }

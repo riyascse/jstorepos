@@ -5,10 +5,14 @@
 
 package com.jstore.domain;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +26,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -29,8 +34,9 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "cliente")
-
 public class Cliente extends Generic implements Serializable {
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,6 +74,8 @@ public class Cliente extends Generic implements Serializable {
     @JoinColumn(name = "id_tipo", referencedColumnName = "id_tipo_cliente")
     @ManyToOne
     private TipoCliente idTipo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
+    private Collection<Cita> citaCollection;
 
     public Cliente() {
     }
@@ -81,7 +89,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setIdCliente(Integer idCliente) {
+        Integer oldIdCliente = this.idCliente;
         this.idCliente = idCliente;
+        changeSupport.firePropertyChange("idCliente", oldIdCliente, idCliente);
     }
 
     public String getNombre() {
@@ -89,7 +99,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setNombre(String nombre) {
+        String oldNombre = this.nombre;
         this.nombre = nombre;
+        changeSupport.firePropertyChange("nombre", oldNombre, nombre);
     }
 
     public String getApellido() {
@@ -97,7 +109,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setApellido(String apellido) {
+        String oldApellido = this.apellido;
         this.apellido = apellido;
+        changeSupport.firePropertyChange("apellido", oldApellido, apellido);
     }
 
     public String getDireccion() {
@@ -105,7 +119,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setDireccion(String direccion) {
+        String oldDireccion = this.direccion;
         this.direccion = direccion;
+        changeSupport.firePropertyChange("direccion", oldDireccion, direccion);
     }
 
     public String getTelefono() {
@@ -113,7 +129,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setTelefono(String telefono) {
+        String oldTelefono = this.telefono;
         this.telefono = telefono;
+        changeSupport.firePropertyChange("telefono", oldTelefono, telefono);
     }
 
     public String getBbpin() {
@@ -121,7 +139,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setBbpin(String bbpin) {
+        String oldBbpin = this.bbpin;
         this.bbpin = bbpin;
+        changeSupport.firePropertyChange("bbpin", oldBbpin, bbpin);
     }
 
     public String getEmail() {
@@ -129,7 +149,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setEmail(String email) {
+        String oldEmail = this.email;
         this.email = email;
+        changeSupport.firePropertyChange("email", oldEmail, email);
     }
 
     public Date getFechaUltimaCompra() {
@@ -137,7 +159,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setFechaUltimaCompra(Date fechaUltimaCompra) {
+        Date oldFechaUltimaCompra = this.fechaUltimaCompra;
         this.fechaUltimaCompra = fechaUltimaCompra;
+        changeSupport.firePropertyChange("fechaUltimaCompra", oldFechaUltimaCompra, fechaUltimaCompra);
     }
 
     public Integer getIdUltimaFactura() {
@@ -145,7 +169,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setIdUltimaFactura(Integer idUltimaFactura) {
+        Integer oldIdUltimaFactura = this.idUltimaFactura;
         this.idUltimaFactura = idUltimaFactura;
+        changeSupport.firePropertyChange("idUltimaFactura", oldIdUltimaFactura, idUltimaFactura);
     }
 
     public List<Factura> getFacturaList() {
@@ -161,7 +187,9 @@ public class Cliente extends Generic implements Serializable {
     }
 
     public void setIdTipo(TipoCliente idTipo) {
+        TipoCliente oldIdTipo = this.idTipo;
         this.idTipo = idTipo;
+        changeSupport.firePropertyChange("idTipo", oldIdTipo, idTipo);
     }
 
     @Override
@@ -186,7 +214,23 @@ public class Cliente extends Generic implements Serializable {
 
     @Override
     public String toString() {
-        return "jstore.domain.Cliente[idCliente=" + idCliente + "]";
+        return nombre + " " + apellido;
+    }
+
+    public Collection<Cita> getCitaCollection() {
+        return citaCollection;
+    }
+
+    public void setCitaCollection(Collection<Cita> citaCollection) {
+        this.citaCollection = citaCollection;
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
 
 }

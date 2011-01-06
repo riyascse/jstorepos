@@ -429,6 +429,7 @@ public class ClientesView extends javax.swing.JPanel {
         c.setEmail(email);
         c.setBbpin(bbpin);
        cliente.saveOrUpdate(c);
+       em.getTransaction().commit();
        
        filterSearch();
     }//GEN-LAST:event_saveButtonActionPerformed

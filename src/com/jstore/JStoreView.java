@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 import com.jstore.views.CajaView;
+import com.jstore.views.CitasView;
 import com.jstore.views.ClientesView;
 import com.jstore.views.ProductosView;
 import com.jstore.views.SesionView;
@@ -307,7 +308,7 @@ public class JStoreView extends FrameView {
         if(menuName.equals("Productos")) containerPanel.add(new ProductosView());
         if(menuName.equals("Clientes")) containerPanel.add(new ClientesView());
         if(menuName.equals("Sesiones")) containerPanel.add(new SesionView());
-//        if(menuName.equals("Citas")) containerPanel.add(new CitaView());
+        if(menuName.equals("Citas")) containerPanel.add(new CitasView());
         containerPanel.validate();
         containerPanel.repaint();
     }
