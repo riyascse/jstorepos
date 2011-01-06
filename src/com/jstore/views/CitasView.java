@@ -21,38 +21,43 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import com.jstore.JStoreApp;
+import com.jstore.components.EntityJTextField;
 import com.jstore.components.EntityTableModel;
+import com.jstore.domain.Cita;
+import com.jstore.domain.Cliente;
 import com.jstore.domain.Producto;
-import java.awt.Color;
-import javax.swing.JDialog;
+import com.jstore.domain.Sesion;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import org.jdesktop.swingx.JXTable;
 
 /**
  *
  * @author phasnox
  */
-public class ProductosView extends javax.swing.JPanel {
+public class CitasView extends javax.swing.JPanel {
     private boolean modificar=true;
 
     EntityManager em;
-    Producto productoDAO;
+    Cita citaDAO;
+    Sesion sesionDAO;
+    Cliente clienteDAO;
     /** Creates new form VentasView */
-    public ProductosView() {
+    public CitasView() {
         initComponents();
         em = JStoreApp.getApplication().getEntityManager();
-        productoDAO = new Producto();
-        productoDAO.setEm(em);
-
+        citaDAO = new Cita();
+        sesionDAO = new Sesion();
+        clienteDAO = new Cliente();
+        clienteDAO.setEm(em);
         //Init masterTable
         initMasterTable();
-        //Init masterTable
 
         filterSearch();
         masterTable.getSelectionModel().addListSelectionListener(new MasterSelectionListener());
 
         newLabel.setVisible(false);
+        ((EntityJTextField)txtNombre).setEntity(clienteDAO);
     }
 
     /** This method is called from within the constructor to
@@ -74,13 +79,13 @@ public class ProductosView extends javax.swing.JPanel {
         datosPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtId = new org.jdesktop.swingx.JXTextField();
-        txtNombre = new org.jdesktop.swingx.JXTextField();
         txtCosto = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
         newLabel = new javax.swing.JLabel();
+        txtNombre = new EntityJTextField();
         saveButton = new org.jdesktop.swingx.JXButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -88,7 +93,7 @@ public class ProductosView extends javax.swing.JPanel {
         addSesionButton = new javax.swing.JButton();
         removeSesionButton = new javax.swing.JButton();
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.jstore.JStoreApp.class).getContext().getResourceMap(ProductosView.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.jstore.JStoreApp.class).getContext().getResourceMap(CitasView.class);
         setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("Form.border.title"))); // NOI18N
         setName("Form"); // NOI18N
 
@@ -175,8 +180,6 @@ public class ProductosView extends javax.swing.JPanel {
         txtId.setEditable(false);
         txtId.setName("txtId"); // NOI18N
 
-        txtNombre.setName("txtNombre"); // NOI18N
-
         txtCosto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtCosto.setText(resourceMap.getString("txtCosto.text")); // NOI18N
         txtCosto.setName("txtCosto"); // NOI18N
@@ -199,6 +202,9 @@ public class ProductosView extends javax.swing.JPanel {
         newLabel.setName("newLabel"); // NOI18N
         newLabel.setOpaque(true);
 
+        txtNombre.setText(resourceMap.getString("txtNombre.text")); // NOI18N
+        txtNombre.setName("txtNombre"); // NOI18N
+
         javax.swing.GroupLayout datosPanelLayout = new javax.swing.GroupLayout(datosPanel);
         datosPanel.setLayout(datosPanelLayout);
         datosPanelLayout.setHorizontalGroup(
@@ -211,15 +217,14 @@ public class ProductosView extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(datosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(datosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(datosPanelLayout.createSequentialGroup()
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(4, 4, 4)
-                            .addComponent(newLabel))
-                        .addComponent(txtDescripcion)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
-                    .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(datosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(datosPanelLayout.createSequentialGroup()
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(newLabel))
+                    .addComponent(txtDescripcion)
+                    .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         datosPanelLayout.setVerticalGroup(
@@ -296,7 +301,7 @@ public class ProductosView extends javax.swing.JPanel {
                         .addComponent(addSesionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(removeSesionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -345,8 +350,8 @@ public class ProductosView extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(datosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(datosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -366,16 +371,16 @@ public class ProductosView extends javax.swing.JPanel {
 }//GEN-LAST:event_newButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.jstore.JStoreApp.class).getContext().getResourceMap(ProductosView.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.jstore.JStoreApp.class).getContext().getResourceMap(CitasView.class);
         int answer = JOptionPane.showConfirmDialog(this, "Seguro que desea borrar?", "Eliminar", JOptionPane.YES_NO_OPTION, 0, resourceMap.getIcon("questionIcon"));
         if(answer==JOptionPane.YES_OPTION){
-            deleteProductoSelected();
+            deleteCitaSelected();
         }
 
 }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-    saveProducto();
+    saveCita();
     newLabel.setVisible(false);
 }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -403,7 +408,7 @@ public class ProductosView extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField txtCosto;
     private javax.swing.JTextField txtDescripcion;
     private org.jdesktop.swingx.JXTextField txtId;
-    private org.jdesktop.swingx.JXTextField txtNombre;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
     private int getSelected(JTable table) {
@@ -418,12 +423,12 @@ public class ProductosView extends javax.swing.JPanel {
         return index;
     }
 
-    private void deleteProductoSelected() {
+    private void deleteCitaSelected() {
         int index = getSelected(masterTable);
         EntityTableModel etm = (EntityTableModel) masterTable.getModel();
-        Producto p = (Producto)etm.getBeanAt(index);
+        Cita c = (Cita)etm.getBeanAt(index);
         em.getTransaction().begin();
-        em.remove(p);
+        em.remove(c);
         em.getTransaction().commit();
         filterSearch();
     }
@@ -444,22 +449,24 @@ public class ProductosView extends javax.swing.JPanel {
             int selected = lsm.getMinSelectionIndex();
             int index = masterTable.convertRowIndexToModel(selected);
             EntityTableModel etm = (EntityTableModel) masterTable.getModel();
-            Producto p = (Producto)etm.getBeanAt(index);
+            Cita c  = (Cita)etm.getBeanAt(index);
             
-            Integer id = p.getIdProducto();
-            String nombre = p.getNombre();
-            String descripcion = p.getDescripcion();
-            Double costo = p.getCosto();
+            Integer id = c.getIdCita();
+            String nombreCliente = c.getCliente().getNombre() + " " + c.getCliente().getApellido();
+            String nombreSesion = c.getSesion().getDescripcion();
+            Date fechaCita = c.getFechaCita();
+            Integer minutosMaquina = c.getDuracion();
+            
 
 
             txtId.setText(id.toString());
-            txtNombre.setText(nombre);
-            txtDescripcion.setText(descripcion);
-            txtCosto.setValue(costo);
+//            txtNombre.setText(nombre);
+//            txtDescripcion.setText(descripcion);
+//            txtCosto.setValue(costo);
                 try {
                     txtCosto.commitEdit();
                 } catch (ParseException ex) {
-                    Logger.getLogger(ProductosView.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CitasView.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             modificar=true;
@@ -478,12 +485,12 @@ public class ProductosView extends javax.swing.JPanel {
     }
 
     private void filterSearch() {
-        Map criterias = new HashMap();
-        //criterias.put("id", searchIdTxt.getText() + "%");
-        criterias.put("nombre", searchTxt.getText() + "%");
-        EntityTableModel etm = (EntityTableModel) masterTable.getModel();
-        etm.setBeans(productoDAO.findLikeCriteria(criterias));
-        masterTable.setModel(etm);
+//        Map criterias = new HashMap();
+//        //criterias.put("id", searchIdTxt.getText() + "%");
+//        criterias.put("nombre", searchTxt.getText() + "%");
+//        EntityTableModel etm = (EntityTableModel) masterTable.getModel();
+//        etm.setBeans(citaDAO.findLikeCriteria(criterias));
+//        masterTable.setModel(etm);
     }
 
     private void blankFields() {
@@ -493,44 +500,44 @@ public class ProductosView extends javax.swing.JPanel {
         txtCosto.setText("");
     }
 
-    public void saveProducto(){
-        Producto p;
-        String nombre;
-        String descripcion;
-        Double costo;
-        Integer minutosMaquina;
-        int selected;
-        int index=0;
-        EntityTableModel etm=null;
-
-        nombre = txtNombre.getText();
-        descripcion = txtDescripcion.getText();
-        costo = ((Number)txtCosto.getValue()).doubleValue();
-
-        index=getSelected(masterTable);
-
-
-        if(modificar){
-           etm = (EntityTableModel) masterTable.getModel();
-           p = (Producto)etm.getBeanAt(index);
-        }else{
-            p = new Producto();
-        }
-
-        p.setNombre(nombre);
-        p.setDescripcion(descripcion);
-        p.setCosto(costo);
-
-
-        try {
-            productoDAO.saveOrUpdate(p);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        }
-
-        filterSearch();
-        modificar=true;
+    public void saveCita(){
+//        Cita c;
+//        String nombre;
+//        String descripcion;
+//        Double costo;
+//        Integer minutosMaquina;
+//        int selected;
+//        int index=0;
+//        EntityTableModel etm=null;
+//
+//        nombre = txtNombre.getText();
+//        descripcion = txtDescripcion.getText();
+//        costo = ((Number)txtCosto.getValue()).doubleValue();
+//
+//        index=getSelected(masterTable);
+//
+//
+//        if(modificar){
+//           etm = (EntityTableModel) masterTable.getModel();
+//           p = (Producto)etm.getBeanAt(index);
+//        }else{
+//            p = new Producto();
+//        }
+//
+//        p.setNombre(nombre);
+//        p.setDescripcion(descripcion);
+//        p.setCosto(costo);
+//
+//
+//        try {
+//            citaDAO.saveOrUpdate(p);
+//            em.getTransaction().commit();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            em.getTransaction().rollback();
+//        }
+//
+//        filterSearch();
+//        modificar=true;
     }
 }
