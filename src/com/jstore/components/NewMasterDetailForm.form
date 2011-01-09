@@ -60,27 +60,40 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="deleteButton" linkSize="1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="refreshButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="saveButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="80" max="32767" attributes="0"/>
-              <Component id="newDetailButton" linkSize="2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="deleteDetailButton" linkSize="2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="refreshButton" linkSize="2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="saveButton" linkSize="2" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="idTipoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="nombreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="apellidoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="direccionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="telefonoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bbpinLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="fechaUltimaCompraLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="idTipoField" alignment="0" pref="315" max="32767" attributes="0"/>
+                  <Component id="nombreField" alignment="0" pref="315" max="32767" attributes="0"/>
+                  <Component id="apellidoField" alignment="0" pref="315" max="32767" attributes="0"/>
+                  <Component id="direccionField" alignment="0" pref="315" max="32767" attributes="0"/>
+                  <Component id="telefonoField" alignment="0" pref="315" max="32767" attributes="0"/>
+                  <Component id="bbpinField" alignment="0" pref="315" max="32767" attributes="0"/>
+                  <Component id="emailField" alignment="0" pref="315" max="32767" attributes="0"/>
+                  <Component id="fechaUltimaCompraField" alignment="0" pref="315" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="masterScrollPane" pref="380" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="detailScrollPane" pref="380" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,19 +102,52 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="masterScrollPane" pref="130" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="1"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="newButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idTipoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idTipoField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="detailScrollPane" pref="130" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nombreLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nombreField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="apellidoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="apellidoField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="direccionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="direccionField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="telefonoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="telefonoField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bbpinLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bbpinField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="emailField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="fechaUltimaCompraLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fechaUltimaCompraField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="1"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="saveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="refreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="deleteDetailButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="newDetailButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="newButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -125,13 +171,13 @@
           </Properties>
           <BindingProperties>
             <BindingProperty name="elements" source="list" target="masterTable" targetPath="elements" updateStrategy="0" immediately="false">
-              <Subbinding sourcePath="${nombre}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN" value="0"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
               <Subbinding sourcePath="${idTipo}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN" value="1"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN" value="0"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="com.jstore.domain.TipoCliente.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${nombre}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN" value="1"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
               <Subbinding sourcePath="${apellido}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN" value="2"/>
@@ -166,79 +212,142 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="newButton">
+    <Component class="javax.swing.JLabel" name="idTipoLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="newButton.text"/>
-        <Property name="name" type="java.lang.String" value="newButton" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="idTipoLabel.text"/>
+        <Property name="name" type="java.lang.String" value="idTipoLabel" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newButtonActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
-      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="deleteButton">
+    <Component class="javax.swing.JLabel" name="nombreLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="deleteButton.text"/>
-        <Property name="name" type="java.lang.String" value="deleteButton" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="nombreLabel.text"/>
+        <Property name="name" type="java.lang.String" value="nombreLabel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="apellidoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="apellidoLabel.text"/>
+        <Property name="name" type="java.lang.String" value="apellidoLabel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="direccionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="direccionLabel.text"/>
+        <Property name="name" type="java.lang.String" value="direccionLabel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="telefonoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="telefonoLabel.text"/>
+        <Property name="name" type="java.lang.String" value="telefonoLabel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="bbpinLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="bbpinLabel.text"/>
+        <Property name="name" type="java.lang.String" value="bbpinLabel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="emailLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="emailLabel.text"/>
+        <Property name="name" type="java.lang.String" value="emailLabel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="fechaUltimaCompraLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="fechaUltimaCompraLabel.text"/>
+        <Property name="name" type="java.lang.String" value="fechaUltimaCompraLabel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="idTipoField">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="idTipoField" noResource="true"/>
       </Properties>
       <BindingProperties>
-        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="deleteButton" targetPath="enabled" updateStrategy="1" immediately="false"/>
+        <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.idTipo}" target="idTipoField" targetPath="text" updateStrategy="0" immediately="false">
+          <Property name="incompletePathValue" type="java.lang.String" value="null"/>
+        </BindingProperty>
+        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="idTipoField" targetPath="enabled" updateStrategy="1" immediately="false"/>
       </BindingProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
-      </AuxValues>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="detailScrollPane">
+    <Component class="javax.swing.JTextField" name="nombreField">
       <Properties>
-        <Property name="name" type="java.lang.String" value="detailScrollPane" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="nombreField" noResource="true"/>
       </Properties>
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="detailTable">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="detailTable" noResource="true"/>
-          </Properties>
-          <BindingProperties>
-            <BindingProperty name="elements" source="masterTable" sourcePath="${selectedElement.citaCollection}" target="detailTable" targetPath="elements" updateStrategy="0" immediately="false">
-              <Property name="incompletePathValue" type="java.util.List" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                <Connection code="java.util.Collections.emptyList()" type="code"/>
-              </Property>
-              <Subbinding sourcePath="${idCita}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN" value="0"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${sesion}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN" value="1"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="com.jstore.domain.Sesion.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${fechaCita}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN" value="2"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${duracion}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN" value="3"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-              </Subbinding>
-            </BindingProperty>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
+      <BindingProperties>
+        <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.nombre}" target="nombreField" targetPath="text" updateStrategy="0" immediately="false">
+          <Property name="incompletePathValue" type="java.lang.String" value="null"/>
+        </BindingProperty>
+        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="nombreField" targetPath="enabled" updateStrategy="1" immediately="false"/>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="apellidoField">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="apellidoField" noResource="true"/>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.apellido}" target="apellidoField" targetPath="text" updateStrategy="0" immediately="false">
+          <Property name="incompletePathValue" type="java.lang.String" value="null"/>
+        </BindingProperty>
+        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="apellidoField" targetPath="enabled" updateStrategy="1" immediately="false"/>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="direccionField">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="direccionField" noResource="true"/>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.direccion}" target="direccionField" targetPath="text" updateStrategy="0" immediately="false">
+          <Property name="incompletePathValue" type="java.lang.String" value="null"/>
+        </BindingProperty>
+        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="direccionField" targetPath="enabled" updateStrategy="1" immediately="false"/>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="telefonoField">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="telefonoField" noResource="true"/>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.telefono}" target="telefonoField" targetPath="text" updateStrategy="0" immediately="false">
+          <Property name="incompletePathValue" type="java.lang.String" value="null"/>
+        </BindingProperty>
+        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="telefonoField" targetPath="enabled" updateStrategy="1" immediately="false"/>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="bbpinField">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="bbpinField" noResource="true"/>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.bbpin}" target="bbpinField" targetPath="text" updateStrategy="0" immediately="false">
+          <Property name="incompletePathValue" type="java.lang.String" value="null"/>
+        </BindingProperty>
+        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="bbpinField" targetPath="enabled" updateStrategy="1" immediately="false"/>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="emailField">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="emailField" noResource="true"/>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.email}" target="emailField" targetPath="text" updateStrategy="0" immediately="false">
+          <Property name="incompletePathValue" type="java.lang.String" value="null"/>
+        </BindingProperty>
+        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="emailField" targetPath="enabled" updateStrategy="1" immediately="false"/>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="fechaUltimaCompraField">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="fechaUltimaCompraField" noResource="true"/>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.fechaUltimaCompra}" target="fechaUltimaCompraField" targetPath="text" updateStrategy="0" immediately="false">
+          <Property name="incompletePathValue" type="java.lang.String" value="null"/>
+        </BindingProperty>
+        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="fechaUltimaCompraField" targetPath="enabled" updateStrategy="1" immediately="false"/>
+      </BindingProperties>
+    </Component>
     <Component class="javax.swing.JButton" name="saveButton">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="saveButton.text"/>
@@ -265,32 +374,29 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="deleteDetailButton">
+    <Component class="javax.swing.JButton" name="newButton">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="deleteDetailButton.text"/>
-        <Property name="name" type="java.lang.String" value="deleteDetailButton" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="newButton.text"/>
+        <Property name="name" type="java.lang.String" value="newButton" noResource="true"/>
       </Properties>
-      <BindingProperties>
-        <BindingProperty name="enabled" source="detailTable" sourcePath="${selectedElement != null}" target="deleteDetailButton" targetPath="enabled" updateStrategy="1" immediately="false"/>
-      </BindingProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteDetailButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newButtonActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="newDetailButton">
+    <Component class="javax.swing.JButton" name="deleteButton">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="newDetailButton.text"/>
-        <Property name="name" type="java.lang.String" value="newDetailButton" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="deleteButton.text"/>
+        <Property name="name" type="java.lang.String" value="deleteButton" noResource="true"/>
       </Properties>
       <BindingProperties>
-        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="newDetailButton" targetPath="enabled" updateStrategy="1" immediately="false"/>
+        <BindingProperty name="enabled" source="masterTable" sourcePath="${selectedElement != null}" target="deleteButton" targetPath="enabled" updateStrategy="1" immediately="false"/>
       </BindingProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newDetailButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>

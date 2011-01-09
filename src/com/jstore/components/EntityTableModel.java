@@ -97,6 +97,8 @@ public class EntityTableModel extends DefaultTableModel{
     }
 
     public Object getBeanAt(int row){
+        if(beans==null){ return null;}
+        if(row<0){ return null;}
         Generic bean = (Generic)beans.get(row);
         return bean;
     }

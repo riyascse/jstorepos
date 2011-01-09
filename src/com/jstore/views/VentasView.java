@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 import org.jdesktop.swingx.JXTable;
 import com.jstore.JStoreApp;
 import com.jstore.components.AskNumberDialog;
+import com.jstore.components.EntityJTextField;
 import com.jstore.components.EntityTableModel;
 import com.jstore.domain.Cliente;
 import com.jstore.domain.Factura;
@@ -60,10 +61,12 @@ public class VentasView extends javax.swing.JPanel {
         productoDAO.setEm(em);
         clienteDAO.setEm(em);
         facturaDAO.setEm(em);
+
         
 
         filterProductoSearch();
         initDetalleTable();
+        ((EntityJTextField)txtCliente).setDataManager(clienteDAO);
     }
 
 
@@ -90,8 +93,7 @@ public class VentasView extends javax.swing.JPanel {
         guardarButton = new org.jdesktop.swingx.JXButton();
         totalTxt = new javax.swing.JFormattedTextField();
         jPanel4 = new javax.swing.JPanel();
-        nombreClienteTxt = new org.jdesktop.swingx.JXTextField();
-        buscarClienteButton = new org.jdesktop.swingx.JXButton();
+        txtCliente = new EntityJTextField();
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.jstore.JStoreApp.class).getContext().getResourceMap(VentasView.class);
         setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("Form.border.title"))); // NOI18N
@@ -156,7 +158,7 @@ public class VentasView extends javax.swing.JPanel {
                     .addComponent(searchProductoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7))
+                .addGap(12, 12, 12))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel3.border.title"))); // NOI18N
@@ -249,22 +251,14 @@ public class VentasView extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(totalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(guardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel4.border.title"))); // NOI18N
         jPanel4.setName("jPanel4"); // NOI18N
 
-        nombreClienteTxt.setText(resourceMap.getString("nombreClienteTxt.text")); // NOI18N
-        nombreClienteTxt.setName("nombreClienteTxt"); // NOI18N
-        nombreClienteTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreClienteTxtActionPerformed(evt);
-            }
-        });
-
-        buscarClienteButton.setText(resourceMap.getString("buscarClienteButton.text")); // NOI18N
-        buscarClienteButton.setName("buscarClienteButton"); // NOI18N
+        txtCliente.setText(resourceMap.getString("txtCliente.text")); // NOI18N
+        txtCliente.setName("txtCliente"); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -272,18 +266,12 @@ public class VentasView extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nombreClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buscarClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(442, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -310,10 +298,6 @@ public class VentasView extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void nombreClienteTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreClienteTxtActionPerformed
 
     private void detalleTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_detalleTablePropertyChange
         // TODO add your handling code here:
@@ -364,7 +348,6 @@ public class VentasView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.jdesktop.swingx.JXButton buscarClienteButton;
     private org.jdesktop.swingx.JXTable detalleTable;
     private org.jdesktop.swingx.JXButton eliminarButton;
     private org.jdesktop.swingx.JXButton guardarButton;
@@ -376,10 +359,10 @@ public class VentasView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private org.jdesktop.swingx.JXTextField nombreClienteTxt;
     private org.jdesktop.swingx.JXTable productosTable;
     private org.jdesktop.swingx.JXTextField searchProductoTxt;
     private javax.swing.JFormattedTextField totalTxt;
+    private javax.swing.JTextField txtCliente;
     // End of variables declaration//GEN-END:variables
 
     private void filterProductoSearch() {

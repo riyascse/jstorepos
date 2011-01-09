@@ -66,7 +66,7 @@
                     <Component class="org.jdesktop.swingx.JXTree" name="menuTree">
                       <Properties>
                         <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                          <TreeModel code="App&#xa; Ventas&#xa;  Reportes&#xa;  Clientes&#xa; Caja&#xa;  Estado&#xa;  Egreso&#xa;  Ingreso&#xa; Productos&#xa;  Nuevo&#xa;  Editar&#xa; Sesiones&#xa; Citas"/>
+                          <TreeModel code="App&#xa; Ventas&#xa; Clientes&#xa; Productos&#xa; Sesiones&#xa; Citas"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="menuTree" noResource="true"/>
                       </Properties>
