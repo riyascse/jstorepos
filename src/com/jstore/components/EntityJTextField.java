@@ -7,12 +7,15 @@ package com.jstore.components;
 
 import com.jstore.domain.Generic;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
+import javax.swing.event.MenuKeyEvent;
 
 /**
  *
@@ -23,40 +26,70 @@ public class EntityJTextField extends JTextField{
     private Generic<Object> dataManager=null;
     private Generic<Object> selectedEntity=null;
     PopUpEntityList menu;
+    ArrayList<String> filters;
     
 
     public EntityJTextField(){
         this.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                onKeyPressed(evt);
+                if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+                    menu.setVisible(false);
+                    return;
+                }
+                if(!evt.isShiftDown()){
+                    menu.getJlist().dispatchEvent(evt);
+                }
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                onKeyReleased(evt);
             }
         });
         menu = new PopUpEntityList();
+        filters = new ArrayList();
     }
 
-    private void onKeyPressed(KeyEvent evt) {
-                HashMap likes = new HashMap();
-                List beans = dataManager.findLikeCriteria(likes);
-                menu.setBeans(beans);
-                menu.show(this.getParent(), this.getX(), this.getY() + this.getHeight());
-
-                if(evt.getKeyCode()==KeyEvent.VK_DOWN){
-                    menu.moveNext();
-                }
-                if(evt.getKeyCode()==KeyEvent.VK_UP){
-                    menu.movePrevious();
-                }
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    menu.setVisible(false);
-                    selectedEntity=menu.getSelectedBean();
-                    this.setText(selectedEntity.toString());
-                }
-                this.requestFocus();
+    private void onKeyReleased(KeyEvent evt) {
+        if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            menu.setVisible(false);
+            return;
+        }
+        if(evt.isActionKey()){
+            if(evt.getKeyCode()==KeyEvent.VK_DOWN & !menu.isVisible()){
+                filterAndShow(this.getText());
             }
+
+        }else{
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER | evt.getKeyCode()==KeyEvent.VK_TAB) & menu.isVisible()){
+                menu.setVisible(false);
+                selectedEntity=menu.getSelectedBean();
+                this.setText(selectedEntity.toString());
+                return;
+            }       
+
+            filterAndShow(this.getText());
+        }
+    }
     public void setBeans(List beans){
-        menu.setBeans(beans);
+        menu.setBeans(beans); 
     }
 
+
+    public void filterAndShow(String searchString){
+        HashMap likes   =   new HashMap();
+        for(String filter : filters){
+                        likes.put(filter, searchString + "%");
+                    }
+
+        List beans = dataManager.findLikeCriteriaOr(likes);
+        menu.setBeans(beans);
+        if(menu.getBeans().isEmpty()){
+            menu.setVisible(false);
+            return;
+            }
+        menu.setVisible(false);
+        menu.show(this.getParent(), this.getX(), this.getY() + this.getHeight());
+        menu.moveFirst();
+    }
     /**
      * @return the entity
      */
@@ -70,13 +103,15 @@ public class EntityJTextField extends JTextField{
     public void setDataManager(Generic<Object> entity) {
         this.dataManager = entity;
     }
-    
+
+    public void addFilter(String columnName){
+        filters.add(columnName);
+    }
     
     class PopUpEntityList extends JPopupMenu {
         private List beans;
         final int MAX_SHOWED=5;
-        private JList jlist;
-        private int selectedIndex=-1;
+        private JList entityJList;
 
         public PopUpEntityList(){
             super("Menu");
@@ -99,57 +134,32 @@ public class EntityJTextField extends JTextField{
 
         private void initJlist() {
             setJlist(new JList());
-            jlist.setFocusable(false);
+            entityJList.setFocusable(false);
             this.add(getJlist());
         }
 
         public JList getJlist() {
-            return jlist;
+            return entityJList;
         }
 
         public void setJlist(JList jlist) {
-            this.jlist = jlist;
+            this.entityJList = jlist;
         }
 
-        private void moveNext() {
-            if(selectedIndex>=jlist.getModel().getSize()-1){
-                selectedIndex=jlist.getModel().getSize()-1;
-            }else{
-                selectedIndex++;
-            }
-            jlist.setSelectedIndex(selectedIndex);
-            jlist.ensureIndexIsVisible(selectedIndex);
+        private void moveFirst() {
+            entityJList.setSelectedIndex(0);
+            entityJList.ensureIndexIsVisible(0);
         }
 
-        private void movePrevious(){
-            if(selectedIndex<=0){
-                selectedIndex=0;
-            }else{
-                selectedIndex--;
-            }
-            jlist.setSelectedIndex(selectedIndex);
-            jlist.ensureIndexIsVisible(selectedIndex);
+        private void moveLast() {
+            int selectedIndex=entityJList.getModel().getSize()-1;
+            entityJList.setSelectedIndex(selectedIndex);
+            entityJList.ensureIndexIsVisible(selectedIndex);
         }
-
-        /**
-         * @return the selectedIndex
-         */
-        public int getSelectedIndex() {
-            return selectedIndex;
-        }
-
-        /**
-         * @param selectedIndex the selectedIndex to set
-         */
-        public void setSelectedIndex(int selectedIndex) {
-            this.selectedIndex = selectedIndex;
-        }
-
+        
         private Generic<Object> getSelectedBean() {
-            return (Generic)beans.get(selectedIndex);
+            return (Generic)beans.get(entityJList.getSelectedIndex());
         }
-
-  
     }
 
 }

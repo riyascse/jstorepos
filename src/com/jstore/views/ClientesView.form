@@ -144,11 +144,9 @@
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="1"/>
-                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="1"/>
                   </Group>
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtNacimiento" max="32767" attributes="1"/>
                       <Component id="txtApellido" alignment="1" max="32767" attributes="1"/>
                       <Component id="txtNombre" alignment="0" max="32767" attributes="1"/>
                       <Component id="idTxt" alignment="0" pref="173" max="32767" attributes="1"/>
@@ -182,11 +180,6 @@
                               </Group>
                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtNacimiento" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <Component id="newLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jPanel3" alignment="0" min="-2" max="-2" attributes="1"/>
@@ -209,12 +202,6 @@
             <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel5.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel5" noResource="true"/>
-          </Properties>
-        </Component>
         <Component class="org.jdesktop.swingx.JXTextField" name="txtApellido">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="txtApellido.text"/>
@@ -224,12 +211,6 @@
         <Component class="org.jdesktop.swingx.JXTextField" name="txtNombre">
           <Properties>
             <Property name="name" type="java.lang.String" value="txtNombre" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="org.jdesktop.swingx.JXDatePicker" name="txtNacimiento">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" resourceKey="txtNacimiento.foreground"/>
-            <Property name="name" type="java.lang.String" value="txtNacimiento" noResource="true"/>
           </Properties>
         </Component>
         <Component class="org.jdesktop.swingx.JXTextField" name="idTxt">

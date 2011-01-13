@@ -71,10 +71,8 @@ public class ClientesView extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         txtApellido = new org.jdesktop.swingx.JXTextField();
         txtNombre = new org.jdesktop.swingx.JXTextField();
-        txtNacimiento = new org.jdesktop.swingx.JXDatePicker();
         idTxt = new org.jdesktop.swingx.JXTextField();
         jLabel3 = new javax.swing.JLabel();
         newLabel = new javax.swing.JLabel();
@@ -125,16 +123,10 @@ public class ClientesView extends javax.swing.JPanel {
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
-        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
-        jLabel5.setName("jLabel5"); // NOI18N
-
         txtApellido.setText(resourceMap.getString("txtApellido.text")); // NOI18N
         txtApellido.setName("txtApellido"); // NOI18N
 
         txtNombre.setName("txtNombre"); // NOI18N
-
-        txtNacimiento.setForeground(resourceMap.getColor("txtNacimiento.foreground")); // NOI18N
-        txtNacimiento.setName("txtNacimiento"); // NOI18N
 
         idTxt.setBackground(resourceMap.getColor("idTxt.background")); // NOI18N
         idTxt.setEditable(false);
@@ -210,11 +202,9 @@ public class ClientesView extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5))
-                .addGap(36, 36, 36)
+                    .addComponent(jLabel2))
+                .addGap(57, 57, 57)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(idTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
@@ -240,11 +230,7 @@ public class ClientesView extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2)))
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
+                            .addComponent(jLabel1)))
                     .addComponent(newLabel)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -404,7 +390,6 @@ public class ClientesView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -421,7 +406,6 @@ public class ClientesView extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXTextField txtApellido;
     private org.jdesktop.swingx.JXTextField txtBBpin;
     private org.jdesktop.swingx.JXTextField txtEmail;
-    private org.jdesktop.swingx.JXDatePicker txtNacimiento;
     private org.jdesktop.swingx.JXTextField txtNombre;
     private javax.swing.JTextField txtSearch;
     private org.jdesktop.swingx.JXTextField txtTelefono;
