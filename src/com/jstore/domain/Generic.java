@@ -17,6 +17,8 @@ import javax.persistence.EntityTransaction;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.hibernate.Criteria;
 import org.hibernate.ScrollableResults;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.impl.SessionImpl;
 
@@ -110,12 +112,25 @@ public void saveOrUpdate(Object o){
                     Map.Entry pairs = (Map.Entry)it.next();
                     criteria.add(Restrictions.like((String)pairs.getKey(), pairs.getValue()));
                 }
-                //criteria.list().size();
-//                criteria.setFirstResult(0);
-//                criteria.setMaxResults(2);
-//                criteria.list().size();
                 return criteria.list();
 	}
+
+
+
+    public List<T> findLikeCriteriaOr(Map likes) {
+
+                SessionImpl entityManagerImpl = (SessionImpl)  em.getDelegate();
+	        Criteria criteria = entityManagerImpl.createCriteria(this.getClass());
+                Disjunction disjunction = Restrictions.disjunction();
+                Iterator it = likes.entrySet().iterator();
+                while(it.hasNext()){
+                    Map.Entry pairs = (Map.Entry)it.next();
+                   disjunction.add(Restrictions.like((String)pairs.getKey(), pairs.getValue()));
+                }
+                criteria.add(disjunction);
+                return criteria.list();
+	}
+
 
     public ScrollableResults findLikeCriteria(Map likes, int fetchSize) {
 
