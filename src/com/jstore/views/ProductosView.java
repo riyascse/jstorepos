@@ -483,7 +483,6 @@ public class ProductosView extends javax.swing.JPanel {
         etm.addColumn("# Sesiones", "numeroSesiones");
         sesionesTable.setModel(etm);
     }
-    // End of variables declaration
 
     class MasterSelectionListener implements ListSelectionListener {
     public void valueChanged(ListSelectionEvent e) {
@@ -577,12 +576,13 @@ public class ProductosView extends javax.swing.JPanel {
         p.setDescripcion(descripcion);
         p.setCosto(costo);
 
-        EntityTableModel setm = (EntityTableModel)sesionesTable.getModel();
+        EntityTableModel sesionTableModel = (EntityTableModel)sesionesTable.getModel();
         
-        p.setProductoSesionList(etm.getBeans());
+        p.setProductoSesionList(sesionTableModel.getBeans());
 
         try {
             productoDAO.saveOrUpdate(p);
+            //productoSesionDAO.saveOrUpdate(p.getProductoSesionList());
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();

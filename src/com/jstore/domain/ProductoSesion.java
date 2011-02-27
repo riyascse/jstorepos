@@ -46,6 +46,7 @@ public class ProductoSesion extends Generic implements Serializable {
     public ProductoSesion(Sesion selectedEntity, int numSesiones) {
         sesion=selectedEntity;
         numeroSesiones=numSesiones;
+        this.productoSesionPK = new ProductoSesionPK(-1, sesion.getIdSesion());
     }
 
     public ProductoSesionPK getProductoSesionPK() {
@@ -70,6 +71,7 @@ public class ProductoSesion extends Generic implements Serializable {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+        this.productoSesionPK.setIdProducto(producto.getIdProducto());
     }
 
     public Sesion getSesion() {
