@@ -28,7 +28,7 @@ public class EntityTableModel extends DefaultTableModel{
     }
 
     public EntityTableModel(){
-
+        beans = new ArrayList();
     }
 
     public void setColumnFormats(Map formats){
@@ -113,6 +113,11 @@ public class EntityTableModel extends DefaultTableModel{
             row.add(o.getProperty(propertyName));
         }
         this.addRow(row.toArray());
+    }
+
+    public void removeRow(int index){
+        super.removeRow(index);
+        beans.remove(index);
     }
 
     public void clearRows() {

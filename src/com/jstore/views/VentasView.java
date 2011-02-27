@@ -66,7 +66,11 @@ public class VentasView extends javax.swing.JPanel {
 
         filterProductoSearch();
         initDetalleTable();
-        ((EntityJTextField)txtCliente).setDataManager(clienteDAO);
+
+        EntityJTextField entityTxt = ((EntityJTextField)txtCliente);
+        entityTxt.setDataManager(clienteDAO);
+        entityTxt.addFilter("nombre");
+        entityTxt.addFilter("apellido");
     }
 
 
