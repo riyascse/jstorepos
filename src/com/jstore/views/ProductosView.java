@@ -11,6 +11,8 @@
 
 package com.jstore.views;
 
+import com.jstore.components.EntityCellEditor;
+import com.jstore.domain.Generic;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,12 +23,23 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import com.jstore.JStoreApp;
+import com.jstore.components.EntityCellRenderer;
+import com.jstore.components.EntityJDialog;
+import com.jstore.components.EntityJTextField;
 import com.jstore.components.EntityTableModel;
 import com.jstore.domain.Producto;
+import com.jstore.domain.ProductoSesion;
+import com.jstore.domain.Sesion;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import org.jdesktop.swingx.JXTable;
 
 /**
@@ -35,24 +48,41 @@ import org.jdesktop.swingx.JXTable;
  */
 public class ProductosView extends javax.swing.JPanel {
     private boolean modificar=true;
-
     EntityManager em;
     Producto productoDAO;
+    Sesion sesionesDAO;
+    EntityJDialog addSesionesDialog;
+    EntityJTextField sesionesTxt;
+    List<ProductoSesion> productoSesionList = new ArrayList();
     /** Creates new form VentasView */
     public ProductosView() {
-        initComponents();
+        
         em = JStoreApp.getApplication().getEntityManager();
         productoDAO = new Producto();
         productoDAO.setEm(em);
 
+        sesionesDAO = new Sesion();
+        sesionesDAO.setEm(em);
+
+        sesionesTxt = new EntityJTextField();
+        sesionesTxt.setPreferredSize(new Dimension(150, 25));
+        sesionesTxt.setDataManager(sesionesDAO);
+        sesionesTxt.addFilter("descripcion");
+
+        initComponents();
         //Init masterTable
         initMasterTable();
+        initDetailTable();
         //Init masterTable
 
         filterSearch();
         masterTable.getSelectionModel().addListSelectionListener(new MasterSelectionListener());
 
         newLabel.setVisible(false);
+
+        
+
+
     }
 
     /** This method is called from within the constructor to
@@ -76,7 +106,7 @@ public class ProductosView extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
         newLabel = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        sesionesJPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         sesionesTable = new javax.swing.JTable();
         addSesionButton = new javax.swing.JButton();
@@ -186,63 +216,65 @@ public class ProductosView extends javax.swing.JPanel {
                 .addGroup(datosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel2.border.title"))); // NOI18N
-        jPanel2.setName("jPanel2"); // NOI18N
+        sesionesJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("sesionesJPanel.border.title"))); // NOI18N
+        sesionesJPanel.setName("sesionesJPanel"); // NOI18N
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
         sesionesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+
             },
             new String [] {
-                "Sesion", "# de Sesiones"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Double.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         sesionesTable.setName("sesionesTable"); // NOI18N
         jScrollPane2.setViewportView(sesionesTable);
 
         addSesionButton.setIcon(resourceMap.getIcon("addSesionButton.icon")); // NOI18N
         addSesionButton.setText(resourceMap.getString("addSesionButton.text")); // NOI18N
         addSesionButton.setName("addSesionButton"); // NOI18N
+        addSesionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSesionButtonActionPerformed(evt);
+            }
+        });
 
         removeSesionButton.setIcon(resourceMap.getIcon("removeSesionButton.icon")); // NOI18N
         removeSesionButton.setName("removeSesionButton"); // NOI18N
+        removeSesionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeSesionButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout sesionesJPanelLayout = new javax.swing.GroupLayout(sesionesJPanel);
+        sesionesJPanel.setLayout(sesionesJPanelLayout);
+        sesionesJPanelLayout.setHorizontalGroup(
+            sesionesJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sesionesJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(sesionesJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(sesionesJPanelLayout.createSequentialGroup()
                         .addComponent(addSesionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(removeSesionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        sesionesJPanelLayout.setVerticalGroup(
+            sesionesJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sesionesJPanelLayout.createSequentialGroup()
+                .addGroup(sesionesJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addSesionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removeSesionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -327,7 +359,7 @@ public class ProductosView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(datosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sesionesJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE))
                 .addContainerGap())
@@ -341,7 +373,7 @@ public class ProductosView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(datosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                    .addComponent(sesionesJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -374,6 +406,28 @@ public class ProductosView extends javax.swing.JPanel {
     newLabel.setVisible(false);
 }//GEN-LAST:event_saveButtonActionPerformed
 
+    private void addSesionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSesionButtonActionPerformed
+        JFrame mainFrame = JStoreApp.getApplication().getMainFrame();
+        addSesionesDialog = new EntityJDialog(mainFrame, true, "Sesion: ", sesionesTxt);
+        sesionesTxt.requestFocus();
+
+        if(addSesionesDialog.getAnswer()){
+             ((EntityTableModel)sesionesTable.getModel()).addRow(new ProductoSesion((Sesion)sesionesTxt.getSelectedEntity(), 0));
+        }
+    }//GEN-LAST:event_addSesionButtonActionPerformed
+
+    private void removeSesionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeSesionButtonActionPerformed
+        int index = getSelected(sesionesTable);
+        EntityTableModel setm = (EntityTableModel) sesionesTable.getModel();
+        ProductoSesion ps = (ProductoSesion) setm.getBeanAt(index);
+
+        em.getTransaction().begin();
+        em.remove(ps);
+        em.getTransaction().commit();
+        setm.removeRow(index);
+
+    }//GEN-LAST:event_removeSesionButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSesionButton;
@@ -383,7 +437,6 @@ public class ProductosView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -394,6 +447,7 @@ public class ProductosView extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXButton saveButton;
     private org.jdesktop.swingx.JXButton searchButton;
     private javax.swing.JTextField searchTxt;
+    private javax.swing.JPanel sesionesJPanel;
     private javax.swing.JTable sesionesTable;
     private javax.swing.JFormattedTextField txtCosto;
     private javax.swing.JTextField txtDescripcion;
@@ -421,6 +475,13 @@ public class ProductosView extends javax.swing.JPanel {
         em.remove(p);
         em.getTransaction().commit();
         filterSearch();
+    }
+
+    private void initDetailTable() {
+        EntityTableModel etm = new EntityTableModel();
+        etm.addColumn("Sesion", "sesion.descripcion");
+        etm.addColumn("# Sesiones", "numeroSesiones");
+        sesionesTable.setModel(etm);
     }
     // End of variables declaration
 
@@ -516,6 +577,9 @@ public class ProductosView extends javax.swing.JPanel {
         p.setDescripcion(descripcion);
         p.setCosto(costo);
 
+        EntityTableModel setm = (EntityTableModel)sesionesTable.getModel();
+        
+        p.setProductoSesionList(etm.getBeans());
 
         try {
             productoDAO.saveOrUpdate(p);

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,8 +37,8 @@ public class Sesion extends Generic implements Serializable {
     private String descripcion;
     @Column(name = "minutos_maquina")
     private Integer minutosMaquina;
-    @ManyToMany(mappedBy = "sesionList")
-    private List<Producto> productoList;
+    @OneToMany(mappedBy = "sesion")
+    private List<ProductoSesion> productoSesionList;
     @OneToMany(mappedBy = "sesion")
     private List<Cita> citaList;
 
@@ -46,6 +47,10 @@ public class Sesion extends Generic implements Serializable {
 
     public Sesion(Integer idSesion) {
         this.idSesion = idSesion;
+    }
+
+    public Sesion(EntityManager em) {
+        super(em);
     }
 
     public Integer getIdSesion() {
@@ -72,12 +77,12 @@ public class Sesion extends Generic implements Serializable {
         this.minutosMaquina = minutosMaquina;
     }
 
-    public List<Producto> getProductoList() {
-        return productoList;
+    public List<ProductoSesion> getProductoSesionList() {
+        return productoSesionList;
     }
 
-    public void setProductoList(List<Producto> productoList) {
-        this.productoList = productoList;
+    public void setProductoSesionList(List<ProductoSesion> productoList) {
+        this.productoSesionList = productoList;
     }
 
     public List<Cita> getCitaList() {
@@ -110,7 +115,7 @@ public class Sesion extends Generic implements Serializable {
 
     @Override
     public String toString() {
-        return "com.jstore.domain.Sesion[idSesion=" + idSesion + "]";
+        return descripcion;
     }
 
 }

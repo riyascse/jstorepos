@@ -6,6 +6,7 @@
 package com.jstore.domain;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -44,7 +45,7 @@ public class Producto extends Generic implements Serializable {
         @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")}, inverseJoinColumns = {
         @JoinColumn(name = "id_sesion", referencedColumnName = "id_sesion")})
     @ManyToMany
-    private List<Sesion> sesionList;
+    private List<ProductoSesion> productoSesionList;
     @OneToMany(mappedBy = "producto")
     private List<FacturaDetalle> facturaDetalleList;
 
@@ -87,12 +88,17 @@ public class Producto extends Generic implements Serializable {
         this.costo = costo;
     }
 
-    public List<Sesion> getSesionList() {
-        return sesionList;
+    public List<ProductoSesion> getProductoSesionList() {
+        return productoSesionList;
     }
 
-    public void setSesionList(List<Sesion> sesionList) {
-        this.sesionList = sesionList;
+    public void setProductoSesionList(List<ProductoSesion> sesionList) {
+        Iterator it = sesionList.iterator();
+        while(it.hasNext()){
+            ProductoSesion ps = (ProductoSesion)it.next();
+            ps.setProducto(this);
+        }
+        this.productoSesionList = sesionList;
     }
 
     public List<FacturaDetalle> getFacturaDetalleList() {

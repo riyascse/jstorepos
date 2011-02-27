@@ -32,7 +32,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="datosPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="sesionesJPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel3" alignment="1" max="32767" attributes="1"/>
                   <Component id="jScrollPane1" alignment="1" pref="702" max="32767" attributes="1"/>
@@ -50,7 +50,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="datosPanel" max="32767" attributes="1"/>
-                  <Component id="jPanel2" alignment="0" pref="177" max="32767" attributes="1"/>
+                  <Component id="sesionesJPanel" alignment="0" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -180,7 +180,7 @@
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCosto" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -247,16 +247,16 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JPanel" name="sesionesJPanel">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Sesiones">
-              <Property name="titleX" resourceKey="jPanel2.border.title"/>
+              <Property name="titleX" resourceKey="sesionesJPanel.border.title"/>
             </TitledBorder>
           </Border>
         </Property>
-        <Property name="name" type="java.lang.String" value="jPanel2" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="sesionesJPanel" noResource="true"/>
       </Properties>
 
       <Layout>
@@ -285,7 +285,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="119" max="-2" attributes="0"/>
-                  <EmptySpace pref="1" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -304,10 +304,7 @@
             <Component class="javax.swing.JTable" name="sesionesTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="2" rowCount="1">
-                    <Column editable="true" title="Sesion" type="java.lang.Object"/>
-                    <Column editable="true" title="# de Sesiones" type="java.lang.Double"/>
-                  </Table>
+                  <Table columnCount="0" rowCount="0"/>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0"/>
@@ -326,12 +323,18 @@
             <Property name="text" type="java.lang.String" resourceKey="addSesionButton.text"/>
             <Property name="name" type="java.lang.String" value="addSesionButton" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addSesionButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="removeSesionButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" resourceKey="removeSesionButton.icon"/>
             <Property name="name" type="java.lang.String" value="removeSesionButton" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeSesionButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

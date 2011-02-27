@@ -6,6 +6,8 @@
 package com.jstore.components;
 
 import com.jstore.domain.Generic;
+import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +16,7 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.event.MenuKeyEvent;
 
@@ -37,14 +40,14 @@ public class EntityJTextField extends JTextField{
                     return;
                 }
                 if(!evt.isShiftDown()){
-                    menu.getJlist().dispatchEvent(evt);
+                    menu.getEntityJlist().dispatchEvent(evt);
                 }
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 onKeyReleased(evt);
             }
         });
-        menu = new PopUpEntityList();
+        menu = new PopUpEntityList(250,200);
         filters = new ArrayList();
     }
 
@@ -61,8 +64,8 @@ public class EntityJTextField extends JTextField{
         }else{
             if((evt.getKeyCode()==KeyEvent.VK_ENTER | evt.getKeyCode()==KeyEvent.VK_TAB) & menu.isVisible()){
                 menu.setVisible(false);
-                selectedEntity=menu.getSelectedBean();
-                this.setText(selectedEntity.toString());
+                setSelectedEntity(menu.getSelectedBean());
+                this.setText(getSelectedEntity().toString());
                 return;
             }       
 
@@ -107,42 +110,64 @@ public class EntityJTextField extends JTextField{
     public void addFilter(String columnName){
         filters.add(columnName);
     }
+
+    /**
+     * @return the selectedEntity
+     */
+    public Generic<Object> getSelectedEntity() {
+        return selectedEntity;
+    }
+
+    /**
+     * @param selectedEntity the selectedEntity to set
+     */
+    public void setSelectedEntity(Generic<Object> selectedEntity) {
+        this.selectedEntity = selectedEntity;
+    }
+
     
     class PopUpEntityList extends JPopupMenu {
         private List beans;
         final int MAX_SHOWED=5;
         private JList entityJList;
+        private int preferredHeight, preferredWidth;
 
         public PopUpEntityList(){
-            super("Menu");
-            setFocusable(false);
-            initJlist();
+            this(400, 400);
         }
 
+        public PopUpEntityList(int width, int height){
+            setFocusable(false);
+            initEntityJList(width, height);
+            this.setMaximumSize(new Dimension(width, height));
+
+        }
 
         private void setBeans(List beans) {
             this.beans=beans;
-            int count=0;
-            Iterator beansit = beans.iterator();
-            getJlist().removeAll();
-            getJlist().setListData(beans.toArray());
+            int defaultHeight;
+            int newHeight;
+
+            defaultHeight = preferredHeight;
+            newHeight = beans.size()*19;
+
+            if(newHeight<defaultHeight){
+                defaultHeight = newHeight;
+            }
+            entityJList.removeAll();
+            entityJList.setListData(beans.toArray());
+            entityJList.getParent().setPreferredSize(new Dimension(200, defaultHeight));
         }
 
         public List getBeans() {
             return beans;
         }
 
-        private void initJlist() {
-            setJlist(new JList());
-            entityJList.setFocusable(false);
-            this.add(getJlist());
-        }
-
-        public JList getJlist() {
+        public JList getEntityJlist() {
             return entityJList;
         }
 
-        public void setJlist(JList jlist) {
+        public void setEntityJlist(JList jlist) {
             this.entityJList = jlist;
         }
 
@@ -160,6 +185,17 @@ public class EntityJTextField extends JTextField{
         private Generic<Object> getSelectedBean() {
             return (Generic)beans.get(entityJList.getSelectedIndex());
         }
-    }
 
+        private void initEntityJList(int width,int height) {
+            preferredWidth = width;
+            preferredHeight = height;
+
+            setEntityJlist(new JList());
+            entityJList.setFocusable(false);
+            JScrollPane scrollp = new JScrollPane();
+            scrollp.setAutoscrolls(true);
+            scrollp.setViewportView(entityJList);
+            this.add(scrollp);
+        }
+    }
 }

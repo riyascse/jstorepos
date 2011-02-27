@@ -4,9 +4,11 @@
 
 package com.jstore;
 
+import java.net.URL;
 import java.util.EventObject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.swing.ImageIcon;
 import org.hibernate.ejb.HibernatePersistence;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
@@ -42,6 +44,9 @@ public class JStoreApp extends SingleFrameApplication {
      * builder, so this additional configuration is not needed.
      */
     @Override protected void configureWindow(java.awt.Window root) {
+        URL resource = JStoreApp.class.getResource("resources/appIcon.png");
+        ImageIcon icon = new ImageIcon(resource);
+        root.setIconImage(icon.getImage());
     }
 
     /**
